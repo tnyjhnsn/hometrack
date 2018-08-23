@@ -6,7 +6,7 @@ app.use(bodyParser.json())
 
 app.use((err, req, res, next) => {
   if (err.status === 400) {
-    return res.status(err.status).send({
+    return res.status(err.status).json({
       error: 'Could not decode request: JSON parsing failed'
     })
   }
@@ -39,7 +39,7 @@ app.post('/', (req, res) => {
     }
   })
   
-  res.status(200).send({
+  res.status(200).json({
     response: report
   })
 })
